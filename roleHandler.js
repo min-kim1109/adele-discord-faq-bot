@@ -15,12 +15,16 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
     const didNotReadFAQRoleName = 'did not read FAQ';
     const approvedRoleName = '.approved';
 
+
     const didNotReadFAQRole = newMember.roles.cache.find(role => role.name === didNotReadFAQRoleName);
     if (didNotReadFAQRole) {
+
         const approvedRole = newMember.roles.cache.find(role => role.name === approvedRoleName);
         if (approvedRole) {
+
             await newMember.roles.remove(approvedRole).catch(console.error);
             console.log(`Removed "${approvedRoleName}" from ${newMember.displayName} for receiving "${didNotReadFAQRoleName}"`);
+
 
             try {
                 await newMember.send("Permissions to view and access the Adele Discord have been removed for not checking the FAQ before asking a question in it. Access to the FAQ will be left untouched. If you would like to access the server again, feel free to leave and rejoin to get reapproved.");
@@ -31,7 +35,3 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
         }
     }
 });
-
-
-// Login to Discord
-client.login('MTIwODUwMjY1MDY2OTEwOTMxOA.GDnqXz.IlN_L9TomvWCjLBPLQFbmBtxsqdeM2JP4kHxGE');
